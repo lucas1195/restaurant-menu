@@ -1,0 +1,129 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5); /* Fundo escurecido */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+
+  position: relative;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-image-container {
+  margin-bottom: 15px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: white; /* Fundo branco */
+  border: none; /* Remove a borda */
+  border-radius: 50%; /* Torna o botão circular */
+  width: 30px; /* Aumenta a largura do círculo */
+  height: 30px; /* Aumenta a altura do círculo */
+  display: flex;
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+  cursor: pointer; /* Muda o cursor ao passar por cima */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+  font-size: 24px; /* Aumenta o tamanho da fonte do X */
+  color: #333; /* Cor do X */
+}
+
+.modal-image {
+  width: 100%; /* A imagem ocupa 100% da largura do modal */
+  height: 200px; /* Altura fixa para manter a proporção como cover */
+  object-fit: cover; /* Cobre a área da imagem */
+  margin-bottom: 15px; /* Espaço abaixo da imagem */
+}
+
+.add-to-order {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #333; /* Cor do botão */
+  color: white; /* Texto branco */
+  border: none; /* Sem borda */
+  cursor: pointer; /* Cursor de pointer */
+  border-radius: 5px; /* Bordas arredondadas */
+}
+
+.modal-text-content {
+  padding: 20px; /* Adiciona padding ao conteúdo */
+  text-align: left; /* Alinha o texto à esquerda */
+}
+
+.product-name {
+  font-weight: bold; /* Nome em negrito */
+  font-size: 1.5em; /* Tamanho maior para o nome */
+  margin-bottom: 10px; /* Espaço abaixo do nome */
+}
+
+.product-description {
+  margin-bottom: 15px; /* Espaço abaixo da descrição */
+}
+
+.size-selection {
+  margin-top: 15px; /* Espaço acima da seleção de tamanhos */
+}
+
+.size-option {
+  display: flex; /* Flex para alinhar os itens na mesma linha */
+  justify-content: space-between; /* Espaça entre o nome e o preço */
+  margin-bottom: 10px; /* Espaço abaixo de cada opção */
+}
+
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.quantity-selector button {
+  background-color: #4f372f;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.quantity-selector span {
+  margin: 0 10px;
+  font-size: 1.2rem;
+}
+
+.add-to-order {
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #4f372f;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.size-selection {
+  margin-bottom: 20px;
+}
+
+.size-option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px; /* Espaçamento entre opções */
+}
+
+.size-option input {
+  margin-right: 10px; /* Espaçamento entre checkbox e texto */
+}
