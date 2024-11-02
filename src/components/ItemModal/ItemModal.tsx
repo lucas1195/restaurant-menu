@@ -24,9 +24,10 @@ const ItemModal: React.FC<ItemModalProps> = ({ item, onClose }) => {
       setSelectedModifier(modifierItem)
     }
   }
+
   const handleAddToBasket = () => {
     const modifiedUnitPrice = item.price + (selectedModifier?.price || 0)
-    const price = modifiedUnitPrice * quantity
+    const price = modifiedUnitPrice
     const id = item.id
     const modifierName = selectedModifier?.name
     dispatch(addToBasket({ id, quantity, price, modifierName }))
@@ -201,7 +202,7 @@ const ItemModal: React.FC<ItemModalProps> = ({ item, onClose }) => {
               onClick={handleAddToBasket}
               disabled={checkClassNameAddToOrder(item)}
             >
-              Add to Order - R$ {totalPrice}
+              Add to Order&nbsp;&nbsp;&bull;&nbsp;&nbsp;R$ {totalPrice}
             </button>
           </div>
         </div>

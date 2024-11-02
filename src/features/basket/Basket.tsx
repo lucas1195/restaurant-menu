@@ -12,7 +12,7 @@ export const Basket = () => {
   const basketItems = useAppSelector(selectBasketItems)
   const menuSections = useAppSelector(selectMenuSections)
 
-  const getItem = id => {
+  const getItem = (id: number) => {
     for (const section of menuSections) {
       const item = section.items.find(item => item.id === id)
       if (item) return item
@@ -20,16 +20,16 @@ export const Basket = () => {
     return null
   }
 
-  const handleDecrease = id => {
+  const handleDecrease = (id: number) => {
     const item = basketItems.find(item => item.id === id)
     if (item && item.quantity > 1) {
       dispatch(updateQuantity({ id, quantity: item.quantity - 1 }))
     } else {
-      dispatch(removeFromBasket(id)) // Remove se a quantidade for 1
+      dispatch(removeFromBasket(id))
     }
   }
 
-  const handleIncrease = id => {
+  const handleIncrease = (id: number) => {
     const item = basketItems.find(item => item.id === id)
     if (item) {
       dispatch(updateQuantity({ id, quantity: item.quantity + 1 }))
@@ -82,7 +82,10 @@ export const Basket = () => {
       <div
         className={`basket-footer ${basketItems.length === 0 ? "hidden" : ""}`}
       >
-        <strong className="basket-total">Total: R$ {total.toFixed(2)}</strong>
+        <strong className="basket-total">
+          <span className="label">Total:</span>
+          <span className="amount">R$ {total.toFixed(2)}</span>
+        </strong>
       </div>
     </div>
   )

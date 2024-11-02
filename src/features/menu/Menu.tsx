@@ -49,6 +49,22 @@ export const Menu = () => {
     imageUrl: section.images[0].image || "",
   }))
 
+  const truncatedText = (description: string) => {
+    return description.length > 60
+      ? description.slice(0, 58) + "..."
+      : description
+  }
+
+  function updateTextForMobile(description: string) {
+    const isMobile = window.innerWidth <= 600
+
+    if (isMobile && description !== null) {
+      return truncatedText(description)
+    }
+
+    return description
+  }
+
   return (
     <div className="menu-card">
       <CategoryTabs images={images} />
@@ -66,7 +82,7 @@ export const Menu = () => {
                   >
                     <div>
                       <h4>{item.name}</h4>
-                      <p>{item.description}</p>
+                      <p>{`${updateTextForMobile(String(item.description))}`}</p>
                       <span>
                         R${" "}
                         {item.modifiers && item.modifiers.length > 0
@@ -92,6 +108,12 @@ export const Menu = () => {
       {isModalOpen && selectedItem && (
         <ItemModal item={selectedItem} onClose={closeModal} />
       )}
+
+      <div>
+        <div className="checkout-footer">
+          <button className="checkout-button">Checkout now</button>
+        </div>
+      </div>
     </div>
   )
 }

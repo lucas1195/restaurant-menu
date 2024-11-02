@@ -7,16 +7,7 @@ import "./app.css"
 
 const App: React.FC = () => {
   return (
-    <div
-      className="container"
-      style={{
-        backgroundColor: "#f0f0f0",
-        padding: "0",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
+    <div className="container">
       <div className="header-container">
         <Header />
       </div>
