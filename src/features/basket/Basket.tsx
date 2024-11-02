@@ -36,6 +36,10 @@ export const Basket = () => {
     }
   }
 
+  const total = basketItems.reduce((acc, item) => {
+    return acc + (item ? item.price * item.quantity : 0)
+  }, 0)
+
   return (
     <div className="basket">
       <div className="basket-header">
@@ -68,7 +72,7 @@ export const Basket = () => {
                   </span>
                 </div>
                 <span className="basket-item-price">
-                  R$ {menuItem.price.toFixed(2)}
+                  R$ {(item.price * item.quantity).toFixed(2)}
                 </span>
               </li>
             ) : null
@@ -78,7 +82,7 @@ export const Basket = () => {
       <div
         className={`basket-footer ${basketItems.length === 0 ? "hidden" : ""}`}
       >
-        <strong className="basket-total">Total:</strong>
+        <strong className="basket-total">Total: R$ {total.toFixed(2)}</strong>
       </div>
     </div>
   )

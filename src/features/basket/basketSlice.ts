@@ -4,6 +4,8 @@ import { RootState } from "../../app/store"
 interface BasketItem {
   id: number
   quantity: number
+  price: number
+  modifierName?: string
 }
 
 interface BasketState {
@@ -18,12 +20,17 @@ export const basketSlice = createSlice({
   name: "basket",
   initialState,
   reducers: {
-    addToBasket: (state, action: PayloadAction<number>) => {
-      const item = state.items.find(item => item.id === action.payload)
+    addToBasket: (state, action: PayloadAction<BasketItem>) => {
+      const item = state.items.find(item => item.id === action.payload.id)
       if (item) {
         item.quantity += 1
       } else {
-        state.items.push({ id: action.payload, quantity: 1 })
+        state.items.push({
+          id: action.payload.id,
+          quantity: 1,
+          price: action.payload.price,
+          modifierName: action.payload.modifierName,
+        })
       }
     },
     removeFromBasket: (state, action: PayloadAction<number>) => {
