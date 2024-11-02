@@ -1,7 +1,6 @@
 .basket {
   width: 100%;
   max-width: 400px;
-
   display: flex;
   flex-direction: column;
   background-color: #f9f9f9;

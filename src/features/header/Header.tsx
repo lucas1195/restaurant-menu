@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchRestaurantDetails } from "./headerSlice"
 import "./Header.css"
@@ -8,6 +8,7 @@ const Header: React.FC = () => {
   const { details, loading, error } = useSelector(
     (state: any) => state.restaurant,
   )
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     // @ts-ignore
@@ -31,27 +32,36 @@ const Header: React.FC = () => {
   const backgroundColor = details?.webSettings?.navBackgroundColour || "#3c2415"
   const buttonColor = details?.webSettings?.primaryColour || "#fff"
 
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen)
+  }
+
   return (
-    <header
-      className="header"
-      style={{
-        backgroundImage: `url(${backgroundImage})`,
-        backgroundSize: "contain",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
+    <header className="header">
       <nav className="header-nav" style={{ backgroundColor }}>
-        <a href="#" style={{ color: "white" }}>
-          Menu
-        </a>
-        <a href="#" style={{ color: "white" }}>
-          Entrar
-        </a>
-        <a href="#" style={{ color: "white" }}>
-          Contato
-        </a>
+        <button className="menu-button" onClick={toggleMenu}>
+          &#9776;
+        </button>
+        <a href="#">Menu</a>
+        <a href="#">Entrar</a>
+        <a href="#">Contato</a>
       </nav>
+
+      {menuOpen && (
+        <div className="sidebar">
+          <a href="#">Menu</a>
+          <a href="#">Entrar</a>
+          <a href="#">Contato</a>
+        </div>
+      )}
+      <img
+        src={backgroundImage}
+        alt="Background"
+        className="header-image"
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+        }}
+      />
     </header>
   )
 }

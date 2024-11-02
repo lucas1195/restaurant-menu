@@ -25,7 +25,6 @@ const ItemModal: React.FC<ItemModalProps> = ({ item, onClose }) => {
     }
   }
   const handleAddToBasket = () => {
-    debugger
     const modifiedUnitPrice = item.price + (selectedModifier?.price || 0)
     const price = modifiedUnitPrice * quantity
     const id = item.id

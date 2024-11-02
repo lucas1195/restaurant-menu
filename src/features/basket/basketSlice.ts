@@ -27,7 +27,7 @@ export const basketSlice = createSlice({
       } else {
         state.items.push({
           id: action.payload.id,
-          quantity: 1,
+          quantity: action.payload.quantity,
           price: action.payload.price,
           modifierName: action.payload.modifierName,
         })
