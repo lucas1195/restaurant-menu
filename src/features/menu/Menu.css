@@ -93,6 +93,10 @@
   position: relative;
 }
 
+.checkout-footer {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .menu-card {
     width: 90%;

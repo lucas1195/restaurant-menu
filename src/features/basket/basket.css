@@ -11,6 +11,10 @@
   height: 1%;
 }
 
+.basket.visible {
+  display: flex;
+}
+
 .basket-header {
   background-color: #f5f5f5;
   padding: 10px;

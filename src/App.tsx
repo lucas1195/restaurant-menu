@@ -1,11 +1,28 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import Header from "./features/header/Header"
 import SearchBar from "./components/SearchBar/SearchBar"
 import { Menu } from "./features/menu/Menu"
 import { Basket } from "./features/basket/Basket"
 import "./app.css"
+import { BasketMobile } from "./components/BasketMobile/BasketMobile"
+import { selectBasketItems } from "./features/basket/basketSlice"
+import { useAppSelector } from "./app/hooks"
 
 const App: React.FC = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
+  const [showBasketMobile, setShowBasketMobile] = useState(false)
+  const basketItems = useAppSelector(selectBasketItems)
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768)
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
+
+  const basketCount = basketItems.length
+  const openBasketMobile = () => setShowBasketMobile(true)
+  const closeBasketMobile = () => setShowBasketMobile(false)
+
   return (
     <div className="container">
       <div className="header-container">
@@ -18,8 +35,18 @@ const App: React.FC = () => {
         <div className="menu-container">
           <Menu />
         </div>
-
-        <Basket />
+        {isMobile && basketCount > 0 ? (
+          <>
+            <button onClick={openBasketMobile} className="checkout-footer">
+              Abrir Carrinho
+            </button>
+            {showBasketMobile && <BasketMobile onClose={closeBasketMobile} />}
+          </>
+        ) : (
+          <div className="basket-container">
+            <Basket />
+          </div>
+        )}
       </div>
     </div>
   )

@@ -108,12 +108,6 @@ export const Menu = () => {
       {isModalOpen && selectedItem && (
         <ItemModal item={selectedItem} onClose={closeModal} />
       )}
-
-      <div>
-        <div className="checkout-footer">
-          <button className="checkout-button">Checkout now</button>
-        </div>
-      </div>
     </div>
   )
 }

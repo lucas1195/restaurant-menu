@@ -42,3 +42,21 @@
   text-align: center;
   margin-top: 25px;
 }
+
+@media (max-width: 600px) {
+  .category-tab {
+    width: 70px;
+    height: 70px;
+    font-size: 12px;
+  }
+
+  .category-tab-name {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+
+  .category-tabs {
+    gap: 35px;
+    justify-content: center;
+  }
+}
