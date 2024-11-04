@@ -13,12 +13,25 @@
 
 .header-nav {
   display: flex;
-  justify-content: center;
+  justify-content: center; /* Centraliza os itens do menu */
+  align-items: center;
   width: 100%;
-  padding: 16px 0;
+  padding: 16px 20px;
   position: relative;
   top: 0;
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+.menu-button,
+.language-selector {
+  margin-left: 20px;
+}
+
+.language-selector {
+  margin-left: 0;
+  margin-right: 10px;
+
+  float: right;
 }
 
 .header-nav a {

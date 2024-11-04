@@ -1,22 +1,8 @@
 // src/features/restaurant/restaurantSlice.ts
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import axios from "axios"
-
-interface WebSettings {
-  id: number
-  venueId: number
-  bannerImage: string
-  backgroundColour: string
-  primaryColour: string
-  primaryColourHover: string
-  navBackgroundColour: string
-}
-
-interface RestaurantDetails {
-  id: number
-  name: string
-  webSettings: WebSettings
-}
+import { WebSettings } from "../../types/WebSettings"
+import { RestaurantDetails } from "../../types/RestaurantDetails"
 
 interface RestaurantState {
   details: RestaurantDetails | null

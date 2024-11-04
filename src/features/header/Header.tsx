@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchRestaurantDetails } from "./headerSlice"
+import LanguageSelector from "../../components/LanguageSelector/LanguageSelector"
 import "./Header.css"
 
 const Header: React.FC = () => {
@@ -42,9 +43,15 @@ const Header: React.FC = () => {
         <button className="menu-button" onClick={toggleMenu}>
           &#9776;
         </button>
-        <a href="#">Menu</a>
-        <a href="#">Entrar</a>
-        <a href="#">Contato</a>
+        <div style={{ display: "flex", justifyContent: "center", flexGrow: 1 }}>
+          <a href="#">Menu</a>
+          <a href="#">Entrar</a>
+          <a href="#">Contato</a>
+        </div>
+
+        <div className="language-selector">
+          <LanguageSelector />
+        </div>
       </nav>
 
       {menuOpen && (

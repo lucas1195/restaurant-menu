@@ -8,6 +8,9 @@ import {
   updateQuantity,
 } from "../../features/basket/basketSlice"
 import { selectMenuSections } from "../../features/menu/menuSlice"
+import { useSelector } from "react-redux"
+import { RootState } from "../../app/store"
+import { useTranslation } from "react-i18next"
 
 interface BasketMobileProps {
   onClose: () => void
@@ -17,6 +20,11 @@ export const BasketMobile: React.FC<BasketMobileProps> = ({ onClose }) => {
   const dispatch = useAppDispatch()
   const basketItems = useAppSelector(selectBasketItems)
   const menuSections = useAppSelector(selectMenuSections)
+  const ccySymbol = useSelector(
+    (state: RootState) => state.restaurant.details?.ccySymbol,
+  )
+
+  const { t } = useTranslation()
 
   const getItem = (id: number) => {
     for (const section of menuSections) {
@@ -49,14 +57,14 @@ export const BasketMobile: React.FC<BasketMobileProps> = ({ onClose }) => {
   return (
     <div className="basket-mobile">
       <div className="basket-mobile-header">
-        <h3 className="basket-mobile-title">Carrinho</h3>
+        <h3 className="basket-mobile-title">{t("Basket")}</h3>
         <button className="close-button" onClick={onClose}>
           &times;
         </button>
       </div>
       <ul className="basket-mobile-items">
         {basketItems.length === 0 ? (
-          <li className="empty-basket-message">Seu carrinho está vazio</li>
+          <li className="empty-basket-message">{t("Your basket is empty")}</li>
         ) : (
           basketItems.map(item => {
             const menuItem = getItem(item.id)
@@ -64,6 +72,11 @@ export const BasketMobile: React.FC<BasketMobileProps> = ({ onClose }) => {
               <li key={item.id} className="basket-mobile-item">
                 <div className="basket-item-details">
                   <span className="basket-item-name">{menuItem.name}</span>
+                  {item.modifierName !== undefined && (
+                    <span className="basket-item-modifier">
+                      {`${t(item.modifierName)} (+${ccySymbol}${item.price.toFixed(2)})`}
+                    </span>
+                  )}
                   <span className="basket-item-quantity">
                     <button
                       className="quantity-button"
@@ -81,7 +94,7 @@ export const BasketMobile: React.FC<BasketMobileProps> = ({ onClose }) => {
                   </span>
                 </div>
                 <span className="basket-item-price">
-                  R$ {(item.price * item.quantity).toFixed(2)}
+                  {ccySymbol} {(item.price * item.quantity).toFixed(2)}
                 </span>
               </li>
             ) : null
@@ -91,7 +104,9 @@ export const BasketMobile: React.FC<BasketMobileProps> = ({ onClose }) => {
       <div className="basket-mobile-footer">
         <strong className="basket-total">
           <span className="label">Total:</span>
-          <span className="amount">R$ {total.toFixed(2)}</span>
+          <span className="amount">
+            {ccySymbol} {total.toFixed(2)}
+          </span>
         </strong>
         <button className="checkout-button">Checkout Now</button>
       </div>

@@ -54,6 +54,13 @@
   border-bottom: 1px solid #ddd;
 }
 
+.basket-item-modifier {
+  display: block;
+  font-size: 0.9em;
+  color: #666;
+  margin-top: 4px;
+}
+
 .basket-mobile-footer {
   background: #eeeeee;
   padding: 20px;

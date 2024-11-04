@@ -7,6 +7,9 @@ import "./app.css"
 import { BasketMobile } from "./components/BasketMobile/BasketMobile"
 import { selectBasketItems } from "./features/basket/basketSlice"
 import { useAppSelector } from "./app/hooks"
+import { I18nextProvider } from "react-i18next"
+import i18n from "./app/i18n"
+import BasketMenuFooter from "./components/BasketMenuFooter/BasketMenuFooter"
 
 const App: React.FC = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
@@ -24,34 +27,34 @@ const App: React.FC = () => {
   const closeBasketMobile = () => setShowBasketMobile(false)
 
   return (
-    <div className="container">
-      <div className="header-container">
-        <Header />
-      </div>
-      <div className="searchbar-container">
-        <SearchBar />
-      </div>
-      <div className="main-container">
-        <div className="menu-container">
-          <Menu />
+    <I18nextProvider i18n={i18n}>
+      <div className="container">
+        <div className="header-container">
+          <Header />
         </div>
-        {isMobile && basketCount > 0 ? (
-          <>
-            <div className="basket-menu-footer">
-              <button onClick={openBasketMobile}>
-                Your basket&nbsp;&nbsp;&bull;&nbsp;{basketCount}
-                &nbsp;&nbsp;{basketCount > 1 ? "items" : "item"}
-              </button>
-            </div>
-          </>
-        ) : (
-          <div className="basket-container">
-            <Basket />
+        <div className="searchbar-container">
+          <SearchBar />
+        </div>
+        <div className="main-container">
+          <div className="menu-container">
+            <Menu />
           </div>
-        )}
-        {showBasketMobile && <BasketMobile onClose={closeBasketMobile} />}
+          {isMobile && basketCount > 0 ? (
+            <>
+              <BasketMenuFooter
+                basketCount={basketCount}
+                openBasketMobile={openBasketMobile}
+              />
+            </>
+          ) : (
+            <div className="basket-container">
+              <Basket />
+            </div>
+          )}
+          {showBasketMobile && <BasketMobile onClose={closeBasketMobile} />}
+        </div>
       </div>
-    </div>
+    </I18nextProvider>
   )
 }
 

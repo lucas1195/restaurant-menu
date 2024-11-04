@@ -9,16 +9,22 @@ import { MenuItem } from "../../types/MenuItem"
 import ItemModal from "../../components/ItemModal/ItemModal"
 import { selectBasketItems } from "../basket/basketSlice"
 import { useAppSelector } from "../../app/hooks"
+import { I18nextProvider, useTranslation } from "react-i18next"
+import i18n from "../../app/i18n"
 
 export const Menu = () => {
   const dispatch = useDispatch()
   const { sections, loading, error } = useSelector(
     (state: RootState) => state.menu,
   )
-  const [expandedSections, setExpandedSections] = useState<number[]>([])
+
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null)
   const basketItems = useAppSelector(selectBasketItems)
+  const ccySymbol = useSelector(
+    (state: RootState) => state.restaurant.details?.ccySymbol,
+  )
+  const { t } = useTranslation()
 
   useEffect(() => {
     // @ts-ignore
@@ -71,7 +77,7 @@ export const Menu = () => {
       <ul className="menu-items">
         {sections.map(section => (
           <li key={section.id}>
-            <p className="section-name">{section.name}</p>
+            <p className="section-name">{t(section.name)}</p>
             <div>
               <ul className="menu-item-list">
                 {section.items.map(item => (
@@ -87,11 +93,16 @@ export const Menu = () => {
                             {getItemQuantityInBasket(item.id)}
                           </span>
                         )}
-                        {item.name}
+                        {t(`${item.name}`)}
                       </h4>
-                      <p>{`${updateTextForMobile(item.description)}`}</p>
+                      <p>
+                        {t(`${updateTextForMobile(item.description)}`, {
+                          defaultValue: updateTextForMobile(item.description),
+                        })}
+                      </p>{" "}
+                      {/* Tradução da descrição */}
                       <span>
-                        R${" "}
+                        {ccySymbol}{" "}
                         {item.modifiers && item.modifiers.length > 0
                           ? item.modifiers[0].items[0].price.toFixed(2)
                           : item.price.toFixed(2)}

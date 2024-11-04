@@ -1,8 +1,9 @@
 import React, { useState } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { addToBasket } from "../../features/basket/basketSlice"
 import { MenuItem, ModifierItem } from "../../types/MenuItem"
 import "./ItemModal.css"
+import { RootState } from "../../app/store"
 
 interface ItemModalProps {
   item: MenuItem
@@ -15,6 +16,9 @@ const ItemModal: React.FC<ItemModalProps> = ({ item, onClose }) => {
   const initialModifier = item.modifiers?.[0]?.items[0].price ?? null
   const [selectedModifier, setSelectedModifier] = useState<ModifierItem | null>(
     null,
+  )
+  const ccySymbol = useSelector(
+    (state: RootState) => state.restaurant.details?.ccySymbol,
   )
 
   const handleModifierToggle = (modifierItem: ModifierItem) => {
@@ -157,7 +161,9 @@ const ItemModal: React.FC<ItemModalProps> = ({ item, onClose }) => {
                             <span className="modifier-name">
                               {modItem.name}
                             </span>
-                            <span>R$ {modItem.price.toFixed(2)}</span>
+                            <span>
+                              {ccySymbol} {modItem.price.toFixed(2)}
+                            </span>
                           </div>
                           <label
                             className={`checkbox-label ${selectedModifier?.id === modItem.id ? "selected" : ""}`}
@@ -202,7 +208,7 @@ const ItemModal: React.FC<ItemModalProps> = ({ item, onClose }) => {
               onClick={handleAddToBasket}
               disabled={checkClassNameAddToOrder(item)}
             >
-              Add to Order&nbsp;&nbsp;&bull;&nbsp;&nbsp;R$ {totalPrice}
+              Add to Order&nbsp;&nbsp;&bull;&nbsp;&nbsp;{ccySymbol} {totalPrice}
             </button>
           </div>
         </div>
