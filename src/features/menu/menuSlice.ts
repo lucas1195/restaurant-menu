@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit"
 import { RootState } from "../../app/store"
-import axios from "axios"
 import { MenuResponse } from "../../types/MenuResponse"
 import { MenuItem } from "../../types/MenuItem"
 import { Section } from "../../types/Section"
 import { MenuState } from "../../types/MenuState"
+import { useAxios } from "../../api/useAxios"
 
 const initialState: MenuState = {
   sections: [],
@@ -12,12 +12,12 @@ const initialState: MenuState = {
   error: null,
 }
 
+const { $axios } = useAxios()
+
 export const fetchMenuItems = createAsyncThunk<Section[]>(
   "menu/fetchMenuItems",
   async () => {
-    const response = await axios.get<MenuResponse>(
-      "https://localhost:7092/api/transferencia/ExternalMenu",
-    )
+    const response = await $axios.get<MenuResponse>("ExternalMenu")
 
     return response.data.sections.map(section => ({
       ...section,

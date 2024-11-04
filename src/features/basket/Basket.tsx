@@ -18,6 +18,7 @@ export const Basket = () => {
     (state: RootState) => state.restaurant.details?.ccySymbol,
   )
   const { t } = useTranslation()
+  const littleCar = "Carrinho"
 
   const getItem = (id: number) => {
     for (const section of menuSections) {
@@ -50,7 +51,7 @@ export const Basket = () => {
   return (
     <div className="basket">
       <div className="basket-header">
-        <h3 className="basket-title">{t("Basket")}</h3>
+        <span className="basket-title">{t("Basket")}</span>
       </div>
       <ul className="basket-items">
         {basketItems.length === 0 ? (

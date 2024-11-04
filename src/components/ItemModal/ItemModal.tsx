@@ -4,6 +4,7 @@ import { addToBasket } from "../../features/basket/basketSlice"
 import { MenuItem, ModifierItem } from "../../types/MenuItem"
 import "./ItemModal.css"
 import { RootState } from "../../app/store"
+import { useTranslation } from "react-i18next"
 
 interface ItemModalProps {
   item: MenuItem
@@ -20,6 +21,7 @@ const ItemModal: React.FC<ItemModalProps> = ({ item, onClose }) => {
   const ccySymbol = useSelector(
     (state: RootState) => state.restaurant.details?.ccySymbol,
   )
+  const { t } = useTranslation()
 
   const handleModifierToggle = (modifierItem: ModifierItem) => {
     if (selectedModifier?.id === modifierItem.id) {
@@ -140,8 +142,12 @@ const ItemModal: React.FC<ItemModalProps> = ({ item, onClose }) => {
         </div>
         <div className="modal-text-content">
           <div className="modal-title">
-            <span className="product-name">{item.name}</span>
-            <span>{item.description}</span>
+            <span className="product-name">{t(item.name)}</span>
+            <span>
+              {item.description !== undefined
+                ? t(String(item.description))
+                : ""}
+            </span>
           </div>
 
           {item.modifiers &&
@@ -150,8 +156,8 @@ const ItemModal: React.FC<ItemModalProps> = ({ item, onClose }) => {
               <div>
                 <div className="size-selection">
                   <div className="choose-option">
-                    <p>Choose your size</p>
-                    <p>Select 1 option</p>
+                    <p>{t("Choose your size")}</p>
+                    <p>{t("Select 1 option")}</p>
                   </div>
                   {item.modifiers.map(modifier => (
                     <div key={modifier.id}>
@@ -159,7 +165,7 @@ const ItemModal: React.FC<ItemModalProps> = ({ item, onClose }) => {
                         <div className="size-option" key={modItem.id}>
                           <div className="option-details">
                             <span className="modifier-name">
-                              {modItem.name}
+                              {t(modItem.name)}
                             </span>
                             <span>
                               {ccySymbol} {modItem.price.toFixed(2)}
@@ -208,7 +214,8 @@ const ItemModal: React.FC<ItemModalProps> = ({ item, onClose }) => {
               onClick={handleAddToBasket}
               disabled={checkClassNameAddToOrder(item)}
             >
-              Add to Order&nbsp;&nbsp;&bull;&nbsp;&nbsp;{ccySymbol} {totalPrice}
+              {t("Add to Order")}&nbsp;&nbsp;&bull;&nbsp;&nbsp;{ccySymbol}{" "}
+              {totalPrice}
             </button>
           </div>
         </div>

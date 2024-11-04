@@ -13,7 +13,7 @@
 
 .header-nav {
   display: flex;
-  justify-content: center; /* Centraliza os itens do menu */
+  justify-content: center;
   align-items: center;
   width: 100%;
   padding: 16px 20px;
@@ -22,13 +22,19 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+.nav-content {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
+
 .menu-button,
 .language-selector {
   margin-left: 20px;
 }
 
 .language-selector {
-  margin-left: 0;
+  margin-left: auto;
   margin-right: 10px;
 
   float: right;
@@ -78,14 +84,14 @@
 
 @media (max-width: 768px) {
   .header-nav {
-    flex-direction: column;
     align-items: center;
     height: 8vh;
   }
 
   .header-nav a {
-    margin: 10px 0;
     font-size: 16px;
+    margin-left: 4rem;
+    font-weight: 500;
   }
 
   .header-logo {
@@ -113,6 +119,17 @@
     left: 0;
     object-fit: cover;
     background-repeat: no-repeat;
+  }
+
+  .nav-content {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+  }
+
+  .language-selector {
+    margin-left: auto;
+    font-size: 21px;
   }
 }
 

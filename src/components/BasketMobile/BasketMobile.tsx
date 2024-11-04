@@ -108,7 +108,7 @@ export const BasketMobile: React.FC<BasketMobileProps> = ({ onClose }) => {
             {ccySymbol} {total.toFixed(2)}
           </span>
         </strong>
-        <button className="checkout-button">Checkout Now</button>
+        <button className="checkout-button">{t("Checkout Now")}</button>
       </div>
     </div>
   )

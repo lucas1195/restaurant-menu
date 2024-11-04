@@ -40,27 +40,16 @@ const Header: React.FC = () => {
   return (
     <header className="header">
       <nav className="header-nav" style={{ backgroundColor }}>
-        <button className="menu-button" onClick={toggleMenu}>
-          &#9776;
-        </button>
-        <div style={{ display: "flex", justifyContent: "center", flexGrow: 1 }}>
+        <div className="nav-content">
           <a href="#">Menu</a>
           <a href="#">Entrar</a>
           <a href="#">Contato</a>
         </div>
-
         <div className="language-selector">
           <LanguageSelector />
         </div>
       </nav>
 
-      {menuOpen && (
-        <div className="sidebar">
-          <a href="#">Menu</a>
-          <a href="#">Entrar</a>
-          <a href="#">Contato</a>
-        </div>
-      )}
       <img
         src={backgroundImage}
         alt="Background"

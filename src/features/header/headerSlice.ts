@@ -3,6 +3,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import axios from "axios"
 import { WebSettings } from "../../types/WebSettings"
 import { RestaurantDetails } from "../../types/RestaurantDetails"
+import { useAxios } from "../../api/useAxios"
 
 interface RestaurantState {
   details: RestaurantDetails | null
@@ -16,11 +17,13 @@ const initialState: RestaurantState = {
   error: null,
 }
 
+const { $axios } = useAxios()
+
 export const fetchRestaurantDetails = createAsyncThunk(
   "restaurant/fetchRestaurantDetails",
   async () => {
-    const response = await axios.get<RestaurantDetails>(
-      "https://localhost:7092/api/transferencia/RestaurantDetails",
+    const response = await $axios.get<RestaurantDetails>(
+      "/RestaurantWebSettings",
     )
     if (!response.data) {
       throw new Error("Erro ao buscar os dados do restaurante")

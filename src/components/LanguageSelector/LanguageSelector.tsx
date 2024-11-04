@@ -1,5 +1,6 @@
 import React from "react"
 import i18n from "i18next"
+import "./LanguageSelector.css"
 
 const LanguageSelector: React.FC = () => {
   const handleLanguageChange = (
@@ -10,12 +11,9 @@ const LanguageSelector: React.FC = () => {
   }
 
   return (
-    <select
-      onChange={handleLanguageChange}
-      style={{ padding: "5px", borderRadius: "4px" }}
-    >
-      <option value="pt">Português</option>
-      <option value="en">English</option>
+    <select onChange={handleLanguageChange} className="language-select">
+      <option value="pt">pt-BR</option>
+      <option value="en">en-US</option>
     </select>
   )
 }
