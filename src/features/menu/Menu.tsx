@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { fetchMenuItems } from "./menuSlice"
 import { RootState } from "../../app/store"
-import "./menu.css"
+import "./Menu.css"
 
 import CategoryTabs from "../../components/CategoryTabs/CategoryTabs"
 import { MenuItem } from "../../types/MenuItem"
