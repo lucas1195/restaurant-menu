@@ -41,6 +41,7 @@
 }
 
 .menu-item-info h4 {
+  display: flex;
   margin: 0 0 4px;
   font-size: 1rem;
   font-weight: 600;
@@ -59,7 +60,6 @@
   font-weight: bold;
   display: block;
   margin-top: 4px;
-  color: #4f372f;
 }
 
 .menu-item-image {
@@ -97,6 +97,20 @@
   display: none;
 }
 
+.item-quantity-icon {
+  display: inline-block;
+  background-color: #4f372f;
+  color: white !important;
+  border-radius: 25%;
+  width: 20px;
+  height: 20px;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  text-align: center;
+  line-height: 20px;
+  margin-right: 8px;
+}
+
 @media (max-width: 768px) {
   .menu-card {
     width: 90%;
@@ -126,6 +140,8 @@
 
   .menu-item-info span {
     font-size: 1rem;
+    margin-top: 0;
+    margin-right: 5px;
   }
 
   .menu-item-info {

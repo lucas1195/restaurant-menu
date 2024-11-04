@@ -7,6 +7,8 @@ import "./menu.css"
 import CategoryTabs from "../../components/CategoryTabs/CategoryTabs"
 import { MenuItem } from "../../types/MenuItem"
 import ItemModal from "../../components/ItemModal/ItemModal"
+import { selectBasketItems } from "../basket/basketSlice"
+import { useAppSelector } from "../../app/hooks"
 
 export const Menu = () => {
   const dispatch = useDispatch()
@@ -16,6 +18,7 @@ export const Menu = () => {
   const [expandedSections, setExpandedSections] = useState<number[]>([])
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null)
+  const basketItems = useAppSelector(selectBasketItems)
 
   useEffect(() => {
     // @ts-ignore
@@ -32,12 +35,9 @@ export const Menu = () => {
     setIsModalOpen(false)
   }
 
-  const toggleSection = (sectionId: number) => {
-    setExpandedSections(prevExpanded =>
-      prevExpanded.includes(sectionId)
-        ? prevExpanded.filter(id => id !== sectionId)
-        : [...prevExpanded, sectionId],
-    )
+  const getItemQuantityInBasket = (itemId: number) => {
+    const basketItem = basketItems.find(basketItem => basketItem.id === itemId)
+    return basketItem ? basketItem.quantity : 0
   }
 
   if (loading) return <p>Loading...</p>
@@ -55,14 +55,14 @@ export const Menu = () => {
       : description
   }
 
-  function updateTextForMobile(description: string) {
+  function updateTextForMobile(description: string | undefined) {
     const isMobile = window.innerWidth <= 600
 
-    if (isMobile && description !== null) {
-      return truncatedText(description)
+    if (isMobile && description !== undefined && description !== "") {
+      return truncatedText(String(description))
     }
 
-    return description
+    return description !== undefined ? description : ""
   }
 
   return (
@@ -81,8 +81,15 @@ export const Menu = () => {
                     onClick={() => openModal(item)}
                   >
                     <div>
-                      <h4>{item.name}</h4>
-                      <p>{`${updateTextForMobile(String(item.description))}`}</p>
+                      <h4>
+                        {getItemQuantityInBasket(item.id) > 0 && (
+                          <span className="item-quantity-icon">
+                            {getItemQuantityInBasket(item.id)}
+                          </span>
+                        )}
+                        {item.name}
+                      </h4>
+                      <p>{`${updateTextForMobile(item.description)}`}</p>
                       <span>
                         R${" "}
                         {item.modifiers && item.modifiers.length > 0
@@ -104,7 +111,7 @@ export const Menu = () => {
           </li>
         ))}
       </ul>
-
+      <div className="spacer" />
       {isModalOpen && selectedItem && (
         <ItemModal item={selectedItem} onClose={closeModal} />
       )}

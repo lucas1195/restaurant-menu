@@ -82,6 +82,10 @@ export const Basket = () => {
       <div
         className={`basket-footer ${basketItems.length === 0 ? "hidden" : ""}`}
       >
+        <strong className="basket-subtotal">
+          <span className="label">Sub total</span>
+          <span className="amount">R$ {total.toFixed(2)}</span>
+        </strong>
         <strong className="basket-total">
           <span className="label">Total:</span>
           <span className="amount">R$ {total.toFixed(2)}</span>

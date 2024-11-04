@@ -88,6 +88,25 @@
   background-color: #8b4513;
 }
 
+.basket-subtotal {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.basket-subtotal .amount {
+  font-size: 17px;
+  font-weight: bold;
+  font-weight: 400;
+}
+
+.basket-subtotal .label {
+  font-size: 15px;
+  margin-right: auto;
+  font-weight: 300;
+}
+
 .basket-total {
   display: flex;
   align-items: center;
@@ -101,7 +120,7 @@
 
 .basket-total .amount {
   font-size: 24px;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .basket-footer {

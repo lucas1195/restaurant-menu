@@ -37,16 +37,19 @@ const App: React.FC = () => {
         </div>
         {isMobile && basketCount > 0 ? (
           <>
-            <button onClick={openBasketMobile} className="checkout-footer">
-              Abrir Carrinho
-            </button>
-            {showBasketMobile && <BasketMobile onClose={closeBasketMobile} />}
+            <div className="basket-menu-footer">
+              <button onClick={openBasketMobile}>
+                Your basket&nbsp;&nbsp;&bull;&nbsp;{basketCount}
+                &nbsp;&nbsp;{basketCount > 1 ? "items" : "item"}
+              </button>
+            </div>
           </>
         ) : (
           <div className="basket-container">
             <Basket />
           </div>
         )}
+        {showBasketMobile && <BasketMobile onClose={closeBasketMobile} />}
       </div>
     </div>
   )
