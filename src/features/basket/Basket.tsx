@@ -18,7 +18,6 @@ export const Basket = () => {
     (state: RootState) => state.restaurant.details?.ccySymbol,
   )
   const { t } = useTranslation()
-  const littleCar = "Carrinho"
 
   const getItem = (id: number) => {
     for (const section of menuSections) {

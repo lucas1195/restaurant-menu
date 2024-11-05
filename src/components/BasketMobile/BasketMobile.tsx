@@ -1,6 +1,5 @@
 import React from "react"
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
-
 import "./basketMobile.css"
 import {
   removeFromBasket,
