@@ -19,12 +19,6 @@ Check out the live app here: [Restaurant Menu App](https://restaurant-menu-mshq.
 - **Frontend**: React, Redux, Vite, i18n, Vercel
 - **Backend**: Simple API with two routes, Heroku
 
-## Getting Started
-
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/your-username/restaurant-menu-app.git
-   cd restaurant-menu-app
 
 ## Project Structure
 ## Frontend: Deployed on Vercel, includes menu browsing and language options.
