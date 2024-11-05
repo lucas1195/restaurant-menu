@@ -1,28 +1,35 @@
-# vite-template-redux
+# Restaurant Menu App
 
-Uses [Vite](https://vitejs.dev/), [Vitest](https://vitest.dev/), and [React Testing Library](https://github.com/testing-library/react-testing-library) to create a modern [React](https://react.dev/) app compatible with [Create React App](https://create-react-app.dev/)
+A restaurant menu application built with a React front-end and a simple backend API. This project provides a clean, user-friendly way to browse a restaurant's menu with options for localization. 
 
-```sh
-npx degit reduxjs/redux-templates/packages/vite-template-redux my-app
-```
+## Live Demo
 
-## Goals
+Check out the live app here: [Restaurant Menu App](https://restaurant-menu-mshq.vercel.app)
 
-- Easy migration from Create React App or Vite
-- As beginner friendly as Create React App
-- Optimized performance compared to Create React App
-- Customizable without ejecting
+## Features
 
-## Scripts
+- **Internationalization**: Supports multiple languages using `i18n`.
+- **State Management**: Managed with `Redux`.
+- **Testing**: Integrated with testing libraries for quality assurance.
+- **Backend API**: Built with two simple routes, deployed on Heroku. The backend was crucial to resolve CORS issues.
+- **Deployments**: Frontend hosted on Vercel, backend on Heroku.
 
-- `dev`/`start` - start dev server and open browser
-- `build` - build for production
-- `preview` - locally preview production build
-- `test` - launch test runner
+## Technologies
 
-## Inspiration
+- **Frontend**: React, Redux, Vite, i18n, Vercel
+- **Backend**: Simple API with two routes, Heroku
 
-- [Create React App](https://github.com/facebook/create-react-app/tree/main/packages/cra-template)
-- [Vite](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react)
-- [Vitest](https://github.com/vitest-dev/vitest/tree/main/examples/react-testing-lib)
-# restaurant-menu
+## Getting Started
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/your-username/restaurant-menu-app.git
+   cd restaurant-menu-app
+
+## Project Structure
+## Frontend: Deployed on Vercel, includes menu browsing and language options.
+## Backend: Hosted on Heroku, handles data fetching with two basic routes.
+
+
+## Notes
+The backend API deployment was essential to handle CORS restrictions and enable smooth integration with the frontend.
