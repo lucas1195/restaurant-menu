@@ -1,6 +1,6 @@
 # Restaurant Menu App
 
-A restaurant menu application built with a React front-end and a simple backend API. This project provides a clean, user-friendly way to browse a restaurant's menu with options for localization. 
+A restaurant menu application built with a React-Redux front-end and a backend API. This project provides a clean, user-friendly way to browse a restaurant's menu with options for localization. 
 
 ## Live Demo
 
