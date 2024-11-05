@@ -17,7 +17,7 @@ const { $axios } = useAxios()
 export const fetchMenuItems = createAsyncThunk<Section[]>(
   "menu/fetchMenuItems",
   async () => {
-    const response = await $axios.get<MenuResponse>("ExternalMenu")
+    const response = await $axios.get<MenuResponse>("/ExternalMenu")
 
     return response.data.sections.map(section => ({
       ...section,
