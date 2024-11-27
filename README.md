@@ -23,7 +23,3 @@ Check out the live app here: [Restaurant Menu App](https://restaurant-menu-mshq.
 ## Project Structure
 ## Frontend: Deployed on Vercel, includes menu browsing and language options.
 ## Backend: Hosted on Heroku, handles data fetching with two basic routes.
-
-
-## Notes
-The backend API deployment was essential to handle CORS restrictions and enable smooth integration with the frontend.
