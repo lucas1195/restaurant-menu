@@ -2,10 +2,6 @@
 
 A restaurant menu application built with a React-Redux front-end and a backend API. This project provides a clean, user-friendly way to browse a restaurant's menu with options for localization. 
 
-## Live Demo
-
-Check out the live app here: [Restaurant Menu App](https://restaurant-menu-mshq.vercel.app)
-
 ## Features
 
 - **Internationalization**: Supports multiple languages using `i18n`.
